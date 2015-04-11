@@ -72,17 +72,16 @@ public class MetierVarietes {
 	 * @return true si l'ajout s'est déroulé avec succès
 	 */
 	public boolean ajouter(Variete variete){
-		boolean ajoutVariete = false;
 		Variete newVariete = consulter(variete.getLibelle());
 		
-		if(newVariete==null){
-			ajoutVariete = true;
+		if(newVariete!=null){
+			return false;
 		}
 		else{
-			ajoutVariete = false;
-			varietes.add(newVariete);
+			varietes.add(variete);
+			return true;
 		}
-		return ajoutVariete;
+		
 		
 //		for(Variete newVariete : varietes){
 //			if(variete.getLibelle() == newVariete.getLibelle()){

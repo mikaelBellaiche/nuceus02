@@ -18,11 +18,15 @@
 		<% if(libelle != null){ %>
 		Libellé : <%= libelle %></br>
 		AOC : <%= aoc %></br>
-		<a href="?action=visualiser">Liste des variétés</a>
+		<a href="?action=visualiser">
+			<div class="glyphicon glyphicon-home">Liste des variétés</div>
+		</a>
 		<% } 
 		 else{ %>
 		 Déjà recensée
-		 <a href="?action=visualiser">Liste des variétés</a></br>
+		 <a href="?action=visualiser">
+		 	<div class="glyphicon glyphicon-home">Liste des variétés</div>
+		 </a></br>
 		 <% } %>
 		
 	</body>

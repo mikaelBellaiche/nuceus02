@@ -35,12 +35,27 @@ public class ControleurNuceus extends HttpServlet {
 			action = "visualiser" ;
 		}
 		
-		if(action.equals("visualiser") || action.equals("annulerAjout")){
+		if(action.equals("visualiser") || action.equals("annulerAjout") || action.equals("annulerSuppression")){
 			request.setAttribute("varietes", metierVarietes.consulter());
 			getServletContext().getRequestDispatcher("/WEB-INF/vues/vueListe.jsp").forward(request,response);
 		}
 		else if(action.equals("renseignerAjout")){
 			getServletContext().getRequestDispatcher("/WEB-INF/vues/vueFormulaireAjout.jsp").forward(request, response);
+		}
+		
+		else if(action.equals("confirmerSuppression")){
+			getServletContext().getRequestDispatcher("/WEB-INF/vues/vueConfirmerSuppression.jsp").forward(request, response);
+		}
+		
+		else if(action.equals("validerSuppression")){
+			String libelle = request.getParameter("value");
+			boolean supprimerOk = metierVarietes.supprimer(libelle);
+			if(supprimerOk){
+				getServletContext().getRequestDispatcher("/WEB-INF/vues/vueValiderSuppression.jsp").forward(request, response);
+			}
+			else{
+				getServletContext().getRequestDispatcher("/WEB-INF/vues/vueErreurSuppression.jsp").forward(request, response);
+			}
 		}
 		
 		else if(action.equals("ajouter")){
